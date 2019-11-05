@@ -1,0 +1,59 @@
+Reviewer: Daniel Levy (u6996577)
+
+Method/class name: "isValidPlacementSequence"
+Method/class type: static boolean
+
+Author: Isaac Wang
+
+Isaac's method for analysing a placement string and determining its validity is concise and efficient. The
+decomposition of the programming is done exactly as specified in the assignment instructions. The code makes
+excellent use of methods previously developed by the group to cut down on processing and to increase the
+efficiency of the code.
+
+There are several criteria for whether a board string has a valid placement or not. The most clever way one of
+these criteria was checked was a for loop in which Isaac compared the substring that specifies what tile of the
+board each placement occupies and compared them against all the other placements to determine if any duplication
+had occurred. This cut down on the amount of checking that needed to be done, reducing the scope of checking from
+n*5 to n*2 pieces of information.
+
+An area to improve would be to comment what is going on with the last two for loops. They take up 30 lines of code
+and there is no documentation to explain them. Because it is well coded it can be followed, but requires some time
+to digest. The methods scan the exit tiles and then determine whether they are valid exit connections or not.
+If they aren't valid exit connections and are a standalone tile then the board string is rejected as invalid.
+
+There is an issue with the following line of code that might invalidate the code:
+
+ "if (!actualConnectToExit(tilePlacements[0])) {
+            return false;
+        }"
+
+This checks to see if the first tile placement connects to an exit. This would be a valid check if all board strings
+are given in chronological order of placement. If they are reordered for any reason, this method will break down and
+be very inaccurate. This error is also unnecessary because there is another method that checks whether standalone
+tiles are validly connected to the exit. This line of code might be better replaced with code that scans the
+board string to make sure it has at least one valid connection to an exit.
+
+The code's style is generally quite good and conforms to style guides, though some care might be taken to fix up
+the spacing that sometimes fluctuate between too much or not enough. An example of this is below:
+
+"for ( int i = 0; i < tilePlacements.length; i++ ) {
+             String[] adjacentTiles = Tile.findAdjacent(tilePlacements[i],boardString);
+             if (adjacentTiles.length == 0) {
+                 if (Tile.isEdge(tilePlacements[i])) {
+                     if(!actualConnectToExit(tilePlacements[i])) {
+                         return false;
+                     }
+                 }else{
+                     return false;
+                 }
+
+             }else {"
+
+In the above code block, the "int" inside the parentheses should be moved directly after the parentheses and the last +
+from "i++" should be directly before the closing parentheses. In the middle, the "else" should have a space on either
+side between the curly braces to make it visually stand out and not hidden. Similarly, the final "else" is missing a
+space next to the left curly brace.
+
+These generally do not affect the readability of the code as it is, for example, properly indented at all times, and
+there is never an excessive or lacking amount of space. Overall, this is a very good piece of code that does the
+job well and does it with a small amount of computational resources.

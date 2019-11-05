@@ -1,0 +1,12 @@
+I submit the following for assessment as my best code.
+
+* The method boardStringToRouteArray in class Tile.
+* The method boardStringToPathArray in class Tile.
+
+Together 400 lines of code with two different implementations of depth-first search algorithms which had to take
+into account the strict connection rules of the game. Despite being a robust, exhaustive search algorithm, the codes
+execute in just a few milliseconds per search.
+
+I declare that this is entirely my own work.
+
+Signed: Daniel Levy (u6996577)
